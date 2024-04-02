@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LFA GPA Calculator and QA</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #FEF1E4;
+  }
+
+  .container {
+    width: 100%;
+    display: none; /* Hide all sections initially */
+  }
+
+  .active {
+    display: block; /* Show the active section */
+  }
+
+  .topnav {
+    overflow: hidden;
+    background-color: #060c31;
+    text-align: center;
+  }
+
+  .topnav a {
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 17px;
+    font-family: "Raleway", serif;
+    border-radius: 10px;
+    background-color: #024fd4;
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  /* Style adjustments from calculator.html and qa.html merged here */
+  .gpa-calculator, .gpa-calculator1, .question, .answer {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #1a6bc8eb;
+    color: white;
+  }
+
+  .answer {
+    display: none; /* Hide answers initially */
+  }
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a href="javascript:void(0);" id="homeLink">Home</a>
+  <a href="javascript:void(0);" id="calculatorLink">Calculator</a>
+  <a href="javascript:void(0);" id="qaLink">QA</a>
+</div>
+
+<div id="home" class="container active">
+  <!-- Content from home.html here -->
+  <h1>Welcome to the Lake Forest Academy(LFA) GPA Calculator</h1>
+  <!-- You can continue here with the rest of the home.html content -->
+</div>
+
+<div id="calculator" class="container">
+  <!-- Content from calculator.html here -->
+  <h2>Weighted and Unweighted GPA Calculators</h2>
+  <!-- Continue with the calculator content, ensuring script functions are included -->
+</div>
+
+<div id="qa" class="container">
+  <!-- Content from qa.html here -->
+  <h2>This is QA. Press on the questions and receive the answer.</h2>
+  <!-- Continue with the QA content, especially the question and answer sections -->
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const homeLink = document.getElementById('homeLink');
+    const calculatorLink = document.getElementById('calculatorLink');
+    const qaLink = document.getElementById('qaLink');
+    const home = document.getElementById('home');
+    const calculator = document.getElementById('calculator');
+    const qa = document.getElementById('qa');
+
+    function showSection(section) {
+      home.classList.remove('active');
+      calculator.classList.remove('active');
+      qa.classList.remove('active');
+      section.classList.add('active');
+    }
+
+    homeLink.addEventListener('click', () => showSection(home));
+    calculatorLink.addEventListener('click', () => showSection(calculator));
+    qaLink.addEventListener('click', () => showSection(qa));
+
+    // QA toggling
+    document.querySelectorAll('.question').forEach(item => {
+      item.addEventListener('click', function() {
+        this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
